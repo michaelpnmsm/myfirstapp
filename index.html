@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 AI 开发之旅</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 48px;
+            margin-bottom: 60px;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            letter-spacing: 2px;
+        }
+
+        .gradient-button {
+            position: relative;
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+            overflow: hidden;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .gradient-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            padding: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: gradientShift 3s ease infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gradient-button:hover::before {
+            opacity: 1;
+        }
+
+        .gradient-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .gradient-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .gradient-button span {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>我的 AI 开发之旅</h1>
+        <button class="gradient-button">
+            <span>开始探索</span>
+        </button>
+    </div>
+
+    <script>
+        const button = document.querySelector('.gradient-button');
+        
+        button.addEventListener('click', () => {
+            // 可以在这里添加点击事件
+            console.log('按钮被点击了！');
+        });
+    </script>
+</body>
+</html>
