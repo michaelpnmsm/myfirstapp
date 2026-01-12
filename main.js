@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -18,9 +18,26 @@ function createWindow() {
   // 加载 index.html
   mainWindow.loadFile('index.html');
 
+
   // 可选：打开开发者工具（开发时使用）
   // mainWindow.webContents.openDevTools();
 }
+
+// 处理打开第一步窗口的 IPC 消息
+ipcMain.on('open-step1-window', () => {
+  const step1Window = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    },
+    title: '第一步',
+    backgroundColor: '#c0c0c0'
+  });
+
+  step1Window.loadFile('step1.html');
+});
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
 app.whenReady().then(createWindow);
